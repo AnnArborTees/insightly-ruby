@@ -15,8 +15,15 @@ module Insightly2
     # GET /v2.1/Users
     # Get a list of users.
     # @return [Array, nil]
-    def get_users
-      Resources::User.parse(request(:get, "Users"))
+    def get_users(query = nil)
+      if query.nil?
+        url = "Users"
+      else
+        url = Utils::UrlHelper.build_url(
+          path: "Opportunities", params: query
+        )
+      end
+      Resources::User.parse(request(:get, url))
     end
   end
 end

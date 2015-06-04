@@ -20,7 +20,7 @@ module Insightly2
         url = "Users"
       else
         url = Utils::UrlHelper.build_url(
-          path: "Opportunities", params: query
+          path: "Users", params: query
         )
       end
       Resources::User.parse(request(:get, url))
